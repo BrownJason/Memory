@@ -2,6 +2,7 @@ extends CanvasLayer
 @onready var main_screen = $MainScreen
 @onready var game_screen = $GameScreen
 @onready var sound = $Sound
+@onready var quit_button = $QuitButton
 
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 func show_game(s: bool) -> void:
 	game_screen.visible = s
 	main_screen.visible = !s
+	quit_button.visible = !s
 
 func on_game_exit_pressed() -> void:
 	show_game(false)

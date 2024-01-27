@@ -16,7 +16,7 @@ func add_image_to_dictionary(fn: String, path: String) -> void:
 	var full_path = path + "/" + fn
 	
 	var ii_dict = {
-		"item_name": fn.rstrip(".png"),
+		"item_name": fn.rstrip(".png.import"),
 		"item_texture": load(full_path)
 	}
 	
@@ -35,6 +35,8 @@ func load_item_images() -> void:
 	for fn in file_names:
 		if ".import" not in fn:
 			add_image_to_dictionary(fn, path)
+		elif fn.ends_with("png.import"):
+			add_image_to_dictionary(fn.replace("png.import","png"), path.replace("png.import","png"))
 			
 	print("loaded:", _item_images.size())
 
