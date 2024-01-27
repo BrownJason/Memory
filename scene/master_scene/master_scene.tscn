@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c01e1ak028biv"]
+[gd_scene load_steps=9 format=3 uid="uid://c01e1ak028biv"]
 
 [ext_resource type="Script" path="res://scene/master_scene/master_scene.gd" id="1_d7rvf"]
 [ext_resource type="Texture2D" uid="uid://hngof0yv3hlw" path="res://assets/images/backgroundEmpty.png" id="1_f5a3u"]
 [ext_resource type="PackedScene" uid="uid://oga6vmdrc0si" path="res://scene/main_screen/main_screen.tscn" id="2_6ljaq"]
 [ext_resource type="PackedScene" uid="uid://y4xt6afe7gof" path="res://scene/game_screen/game_screen.tscn" id="3_pqbyx"]
+[ext_resource type="Texture2D" uid="uid://ifh85jdvlday" path="res://assets/ui/blue_button00.png" id="5_bhlwd"]
+[ext_resource type="Texture2D" uid="uid://br2ikbl2xjhxs" path="res://assets/ui/yellow_button00.png" id="6_x4rfg"]
+[ext_resource type="Texture2D" uid="uid://dn8dynhn32sfv" path="res://assets/ui/green_button00.png" id="7_ihrlw"]
+[ext_resource type="LabelSettings" uid="uid://clwktqtbhq0hf" path="res://assets/gm_32_wh.tres" id="8_507au"]
 
 [node name="MasterScene" type="CanvasLayer"]
 script = ExtResource("1_d7rvf")
@@ -21,3 +25,33 @@ texture = ExtResource("1_f5a3u")
 [node name="GameScreen" parent="." instance=ExtResource("3_pqbyx")]
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
+
+[node name="QuitButton" type="TextureButton" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -82.0
+offset_right = 96.0
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_bhlwd")
+texture_pressed = ExtResource("6_x4rfg")
+texture_hover = ExtResource("7_ihrlw")
+
+[node name="Label" type="Label" parent="QuitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = ExtResource("8_507au")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

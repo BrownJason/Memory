@@ -17,6 +17,9 @@ const SOUNDS = {
 	SOUND_SELECT_BUTTON: preload("res://assets/sounds/sfx_sounds_impact7.wav")
 }
 
+func _ready():
+	AudioServer.set_bus_volume_db(0, -10)
+
 func play_sound(player: AudioStreamPlayer, key: String) -> void:
 	if !SOUNDS.has(key):
 		return
@@ -27,4 +30,6 @@ func play_sound(player: AudioStreamPlayer, key: String) -> void:
 	
 func play_button_click(player: AudioStreamPlayer) -> void:
 	play_sound(player, SOUND_SELECT_BUTTON)
-	
+
+func play_tile_click(player: AudioStreamPlayer) -> void:
+	play_sound(player, SOUND_SELECT_TILE)
